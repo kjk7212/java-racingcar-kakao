@@ -27,14 +27,14 @@ public class RacingGame {
 			.collect(Collectors.toList());
 	}
 
-	public List<Integer> move() {
-		List<Integer> positionList = new ArrayList<>();
+	public GameResult move() {
+		GameResult gameResult = new GameResult();
 		for (Car car : cars) {
-			positionList.add(car.moveForwardIfCan(numberGenerator.createNumber()));
+			gameResult.addResult(car.moveForwardIfCan(numberGenerator.createNumber()));
 		}
 		this.round--;
 
-		return positionList;
+		return gameResult;
 	}
 
 	public List<String> selectWinners() {

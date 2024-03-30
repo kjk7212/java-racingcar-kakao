@@ -3,6 +3,8 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import racingcar.model.GameResult;
+import racingcar.model.GameResults;
 import racingcar.model.RacingGame;
 import racingcar.model.RandomNumberGenerator;
 import racingcar.view.View;
@@ -17,7 +19,7 @@ public class RacingController {
 
 	public void run() {
 		gameSetting();
-		List<List<Integer>> gameResult = gameStart();
+		GameResults gameResult = gameStart();
 
 		this.view.displayResult(gameResult, this.racingGame.getCars());
 		this.view.displayWinners(this.racingGame.selectWinners());
@@ -32,15 +34,15 @@ public class RacingController {
 		this.racingGame = new RacingGame(names, round, new RandomNumberGenerator());
 	}
 
-	private List<List<Integer>> gameStart() {
-		List<List<Integer>> gameResult = new ArrayList<>();
+	private GameResults gameStart() {
+		GameResults gameResults = new GameResults();
 
 		this.view.displayStart();
 		while (racingGame.isNotEnd()) {
-			gameResult.add(this.racingGame.move());
+			gameResults.addResult(this.racingGame.move());
 		}
 
-		return gameResult;
+		return gameResults;
 	}
 
 	public String[] createCarNamesFromUserInput(String input) {
