@@ -9,11 +9,13 @@ import java.util.stream.Stream;
 public class RacingGame {
 	private final WinnerSelector winnerSelector;
 	private final List<Car> cars;
+	private final NumberGenerator numberGenerator;
 	private int round;
 
-	public RacingGame(String[] carNames, int round) {
-		this.winnerSelector = new WinnerSelector();
+	public RacingGame(String[] carNames, int round, NumberGenerator numberGenerator) {
 		this.cars = generateCars(carNames);
+		this.winnerSelector = new WinnerSelector(cars);
+		this.numberGenerator = numberGenerator;
 		this.round = round;
 	}
 
@@ -26,19 +28,15 @@ public class RacingGame {
 	public List<Integer> move() {
 		List<Integer> positionList = new ArrayList<>();
 		for (Car car : cars) {
-			positionList.add(car.moveForwardIfCan(createRandomNumber()));
+			positionList.add(car.moveForwardIfCan(numberGenerator.createNumber()));
 		}
 		this.round--;
 
 		return positionList;
 	}
 
-	public List<String> selectWinners(List<Car> cars) {
-		return this.winnerSelector.selectWinners(cars);
-	}
-
-	public int createRandomNumber() {
-		return (int)(Math.random() * 9);
+	public List<String> selectWinners() {
+		return this.winnerSelector.selectWinners();
 	}
 
 	public int getCarsLength() {

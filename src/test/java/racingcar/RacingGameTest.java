@@ -4,7 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 
 import racingcar.controller.RacingController;
 import racingcar.model.Car;
+import racingcar.model.CustomNumberGenerator;
 import racingcar.model.RacingGame;
+import racingcar.model.RandomNumberGenerator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +28,7 @@ public class RacingGameTest {
 			@Override
 			public void gameSetting() {
 				String[] names = createCarNamesFromUserInput(carNames);
-				racingGame = new RacingGame(names, 3);
+				racingGame = new RacingGame(names, 3, new RandomNumberGenerator());
 			}
 		};
 	}
@@ -54,13 +56,7 @@ public class RacingGameTest {
 	void moveCarsWithNumberOver4() {
 		String[] names = {"fre", "test", "est"};
 
-		racingGame = new RacingGame(names, 3) {
-			@Override
-			public int createRandomNumber() {
-				return 4;
-			}
-		};
-
+		racingGame = new RacingGame(names, 3, new CustomNumberGenerator(4));
 		racingGame.move();
 
 		for (Car car : racingGame.getCars()) {
@@ -73,13 +69,7 @@ public class RacingGameTest {
 	void moveCarsWithNumberUnder4() {
 		String[] names = {"fre", "test", "est"};
 
-		racingGame = new RacingGame(names, 3) {
-			@Override
-			public int createRandomNumber() {
-				return 3;
-			}
-		};
-
+		racingGame = new RacingGame(names, 3, new CustomNumberGenerator(3));
 		racingGame.move();
 
 		for (Car car : racingGame.getCars()) {

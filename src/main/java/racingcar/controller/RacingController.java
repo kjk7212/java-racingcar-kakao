@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.model.RacingGame;
+import racingcar.model.RandomNumberGenerator;
 import racingcar.view.View;
 
 public class RacingController {
@@ -19,7 +20,7 @@ public class RacingController {
 		List<List<Integer>> gameResult = gameStart();
 
 		this.view.displayResult(gameResult, this.racingGame.getCars());
-		this.view.displayWinners(this.racingGame.selectWinners(racingGame.getCars()));
+		this.view.displayWinners(this.racingGame.selectWinners());
 	}
 
 	public void gameSetting() {
@@ -28,7 +29,7 @@ public class RacingController {
 
 		int round = this.view.requestInputTryCount();
 
-		this.racingGame = new RacingGame(names, round);
+		this.racingGame = new RacingGame(names, round, new RandomNumberGenerator());
 	}
 
 	private List<List<Integer>> gameStart() {
