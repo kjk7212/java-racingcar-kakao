@@ -1,9 +1,5 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import racingcar.model.GameResult;
 import racingcar.model.GameResults;
 import racingcar.model.RacingGame;
 import racingcar.model.RandomNumberGenerator;

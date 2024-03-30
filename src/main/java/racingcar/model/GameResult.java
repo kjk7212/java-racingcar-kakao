@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameResult {
-	private List<Integer> gameResult;
+	private final List<Integer> gameResult;
 
 	public GameResult() {
 		this.gameResult = new ArrayList<>();
