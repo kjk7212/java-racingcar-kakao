@@ -4,6 +4,7 @@ import static racingcar.view.Validator.*;
 
 public class Car {
 	private static final int MOVEMENT_THRESHOLD = 3;
+	private static final int DEFAULT_POSITION = 0;
 
 	private int position;
 	private String name;
@@ -12,7 +13,7 @@ public class Car {
 	}
 
 	public Car(String name) {
-		this(name, 0);
+		this(name, DEFAULT_POSITION);
 	}
 
 	public Car(String name, int position) {

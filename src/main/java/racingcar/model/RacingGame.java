@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RacingGame {
+	private static final int GAME_END_ROUND = 0;
+
 	private final WinnerSelector winnerSelector;
 	private final List<Car> cars;
 	private final NumberGenerator numberGenerator;
@@ -44,7 +46,7 @@ public class RacingGame {
 	}
 
 	public boolean isNotEnd() {
-		return this.round > 0;
+		return this.round > GAME_END_ROUND;
 	}
 
 	public List<Car> getCars() {

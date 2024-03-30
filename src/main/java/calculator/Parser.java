@@ -4,14 +4,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
-	private static final Pattern customDelimiterPattern = Pattern.compile("//(.)\n(.*)");
+	private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+	private static final int CUSTOM_DELIMITER_GROUP = 1;
+	private static final int CUSTOM_DELIMITER_TEXT_GROUP = 2;
 
 	public String[] parseInput(String input) {
-		Matcher matcher = customDelimiterPattern.matcher(input);
+		Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
 
 		if (matcher.find()) {
-			String customDelimiter = matcher.group(1);
-			return matcher.group(2).split(customDelimiter);
+			String customDelimiter = matcher.group(CUSTOM_DELIMITER_GROUP);
+			return matcher.group(CUSTOM_DELIMITER_TEXT_GROUP).split(customDelimiter);
 		}
 
 		return input.split("[,:;]");

@@ -13,7 +13,7 @@ public class Calculator {
 
 	public int calculate(String input) {
 		if (input == null || input.isEmpty()) {
-			return 0;
+			return ZERO;
 		}
 
 		return this.sum(parser.parseInput(input));
