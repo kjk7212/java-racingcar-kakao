@@ -7,10 +7,7 @@ public class Car {
 	private static final int DEFAULT_POSITION = 0;
 
 	private int position;
-	private String name;
-
-	public Car() {
-	}
+	private final String name;
 
 	public Car(String name) {
 		this(name, DEFAULT_POSITION);
