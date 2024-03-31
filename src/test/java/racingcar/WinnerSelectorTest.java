@@ -9,7 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racingcar.controller.RacingController;
-import racingcar.model.CustomNumberGenerator;
 import racingcar.model.RacingGame;
 import racingcar.model.WinnerSelector;
 
@@ -25,7 +24,7 @@ public class WinnerSelectorTest {
 	@Test
 	@DisplayName("우승자 테스트")
 	void winnerTest() {
-		racingGame = new RacingGame(racingController.createCarNamesFromUserInput("fre,bas,123"), 3, new CustomNumberGenerator(4));
+		racingGame = new RacingGame(racingController.createCarNamesFromUserInput("fre,bas,123"), 3, () -> 4);
 		racingGame.move();
 
 		WinnerSelector winnerSelector = new WinnerSelector(racingGame.getCars());

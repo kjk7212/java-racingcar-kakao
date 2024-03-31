@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 
 import racingcar.controller.RacingController;
 import racingcar.model.Car;
-import racingcar.model.CustomNumberGenerator;
 import racingcar.model.RacingGame;
 import racingcar.model.RandomNumberGenerator;
 
@@ -56,7 +55,7 @@ public class RacingGameTest {
 	void moveCarsWithNumberOver4() {
 		String[] names = {"fre", "test", "est"};
 
-		racingGame = new RacingGame(names, 3, new CustomNumberGenerator(4));
+		racingGame = new RacingGame(names, 3, () -> 4);
 		racingGame.move();
 
 		for (Car car : racingGame.getCars()) {
@@ -69,7 +68,7 @@ public class RacingGameTest {
 	void moveCarsWithNumberUnder4() {
 		String[] names = {"fre", "test", "est"};
 
-		racingGame = new RacingGame(names, 3, new CustomNumberGenerator(3));
+		racingGame = new RacingGame(names, 3, () -> 3);
 		racingGame.move();
 
 		for (Car car : racingGame.getCars()) {
